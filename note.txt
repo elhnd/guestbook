@@ -1,0 +1,6 @@
+route => link between the request path and a PHP callable (controllers), a function that creates the HTTP response for that request
+symfony console list make => list all command vavailable under a diven namespace
+
+Configurations formats => Symfony supports YAML, XML, PHP and PHP attributes out of the box.
+Configuration related to packages => YAML is the best choice.
+Configuration related to PHP code => attributes are better choice. The configuration is next to the code that it configures.
