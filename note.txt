@@ -4,3 +4,20 @@ symfony console list make => list all command vavailable under a diven namespace
 Configurations formats => Symfony supports YAML, XML, PHP and PHP attributes out of the box.
 Configuration related to packages => YAML is the best choice.
 Configuration related to PHP code => attributes are better choice. The configuration is next to the code that it configures.
+Symfony exposes the request data through a Request object. When Symfony sees a controller argument whith this type-hint, it 
+    automaticalyy knows to pass it to you!;
+
+A great debug helper is the Symfony dump() function. It is always available and allows you to dump complex 
+    variables in a nice interactive format.
+
+symfony var:export => check all environment variables exposed by sSymfony.
+
+Symfony Components => Packages that implement core features and low level abstractions that most applications need (routing, console, HTTP client, cache, ...)
+
+Symfony Bundles => Packages that add high-level features or provide integrations with third-party libraries (bundles are mostly contributed by the community)
+
+Easy Admin :
+
+
+
+next stape Building the User Interface
