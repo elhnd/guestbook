@@ -19,5 +19,19 @@ Symfony Bundles => Packages that add high-level features or provide integrations
 Easy Admin :
 
 
+Dispatcher => A dispatcher dispatches certain events at specific times that listeners can listen to. Listeners are hooks into framework internals.
+Subscriber => A subscriber is a listener with a static getSubscribedEvents() method that returns its configuration. 
+    This allows subscibers to be registered in the Symfony dispatcher automatically.
 
-next stape Building the User Interface
+symfony console make:subscriber TwigEventSubscriber
+
+The ORM\PrePersist event is triggred when the object is stored in the database for the very first time.
+
+Dependency injection container => the container is responsible for managing services: creating them and injecting them whenever needed.
+
+A service is a "global" object that provides features (e.g. a mailer, a logger, a slugger, etc.) unlike data objects (e.g. Doctrine entity instances).
+
+When a class implements some specific interfaces, the container knows that the class needs to be registered in a certain way.
+
+A form type describes the form fields bound to a model. It does the data conversion between submitted data and the model class properties.
+By default, Symfony uses metadata from the Comment entity - such as the Doctrine metadata - to guess configuration about each field.
