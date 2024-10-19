@@ -91,3 +91,5 @@ docker compose exec database psql app app -c "INSERT INTO admin (id, username, r
 login form => symfony console make:security:form-login
 
 route names and paths => symfony console debug:router
+
+vault env variable => symfony console secrets:set AKISMET_KEY
