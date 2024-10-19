@@ -1,5 +1,45 @@
+Extension à installer si non installer :
+
+[OK] Git installed
+[OK] PHP installed version 8.3.12 (/usr/bin/php8.3)
+[OK] PHP extension "mbstring" installed - required
+[OK] PHP extension "openssl" installed - required
+[OK] PHP extension "zip" installed - optional - needed only for chapter 17 (Panther)
+[OK] PHP extension "gd" installed - optional - needed only for chapter 23 (Imagine)
+[OK] PHP extension "redis" installed - optional - needed only for chapter 31
+[OK] PHP extension "amqp" installed - optional - needed only for chapter 32
+[OK] PHP extension "xml" installed - required
+[OK] PHP extension "session" installed - required
+[OK] PHP extension "xsl" installed - required
+[OK] PHP extension "sodium" installed - required
+[OK] PHP extension "iconv" installed - required
+[OK] PHP extension "intl" installed - required
+[OK] PHP extension "pdo_pgsql" installed - required
+[OK] PHP extension "ctype" installed - required
+[OK] PHP extension "tokenizer" installed - required
+[OK] PHP extension "curl" installed - optional - needed only for chapter 17 (Panther)
+[OK] PHP extension "json" installed - required
+[OK] Composer installed
+[OK] Docker installed
+[OK] Docker Compose installed
+[OK] npm installed
+
+Platform.sh production :
+
+    create new project => symfony cloud:project:create --title="Guestbook" --plan=development
+    deploy => symfony cloud:deploy
+    check is ok => symfony cloud:url -1
+    debugging => symfony cloud:logs --tail
+    connect with ssh => symfony cloud:ssh
+    Accessing database => symfony cloud:tunnel:open && symfony var:expose-from-tunnel
+        run => symfony run psql && symfony cloud:tunnel:close
+
 route => link between the request path and a PHP callable (controllers), a function that creates the HTTP response for that request
 symfony console list make => list all command vavailable under a diven namespace
+Tail log => symfony server:log
+
+Accessing local Database => symfony run psql (docker compose exec database psql app app)
+Dumping and restoring Database Data => symfony run pg_dump --data-only > dump.sql  && symfony run psql < dump.sql
 
 Configurations formats => Symfony supports YAML, XML, PHP and PHP attributes out of the box.
 Configuration related to packages => YAML is the best choice.
