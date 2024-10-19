@@ -75,3 +75,19 @@ When a class implements some specific interfaces, the container knows that the c
 
 A form type describes the form fields bound to a model. It does the data conversion between submitted data and the model class properties.
 By default, Symfony uses metadata from the Comment entity - such as the Doctrine metadata - to guess configuration about each field.
+
+User entity => symfony console make:user Admin
+Generating password => symfony console security:hash-password
+passer123 => $2y$13$hOo98Dwj971v9MW.W9Jo/.E2.cVS/5RoMmHjrJzvISHbzk/Y4Xuma
+
+symfony run psql -c "INSERT INTO admin (id, username, roles, password) \
+  VALUES (nextval('admin_id_seq'), 'admin', '[\"ROLE_ADMIN\"]', \
+  '\$2y\$13\$hOo98Dwj971v9MW.W9Jo/.E2.cVS/5RoMmHjrJzvISHbzk/Y4Xuma')"
+
+docker compose exec database psql app app -c "INSERT INTO admin (id, username, roles, password) \
+  VALUES (nextval('admin_id_seq'), 'admin', '[\"ROLE_ADMIN\"]', \
+  '\$2y\$13\$hOo98Dwj971v9MW.W9Jo/.E2.cVS/5RoMmHjrJzvISHbzk/Y4Xuma')"
+
+login form => symfony console make:security:form-login
+
+route names and paths => symfony console debug:router
