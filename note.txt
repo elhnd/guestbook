@@ -93,3 +93,41 @@ login form => symfony console make:security:form-login
 route names and paths => symfony console debug:router
 
 vault env variable => symfony console secrets:set AKISMET_KEY
+dev enc => symfony console secrets:set AKISMET_KEY --env=test
+
+unit test package => symfony composer req phpunit --dev
+
+generate class test => symfony console make:test TestCase SpamCheckerTest 
+                       symfony console make:test WebTestCase Controller\\ConferenceController
+                       symfony console make:test PantherTestCase Controller\\ConferenceController
+
+The MockHttpClient class makes it possible to mock any HTTP server. It takes an array of MockResponse instances that contain the expected body and Response headers.
+
+run test => symfony php bin/phpunit
+
+$client = static::createClient() => the $client variable simulates a browser
+
+for env test => symfony console doctrine:database:create --env=test
+                symfony console doctrine:migrations:migrate -n --env=test
+
+Fixture => symfony composer req orm-fixtures --dev
+
+show hasher services => symfony console debug:autowiring hasher
+
+load fixtures => symfony console doctrine:fixtures:load --env=test
+
+Load env test => symfony server:stop
+                APP_ENV=test symfony server:start -d
+
+reset database after eatxh test => symfony composer req "dama/doctrine-test-bundle:^8" --dev
+
+Symfony Panther for real browser => symfony composer req panther --dev
+
+The SYMFONY_PROJECT_DEFAULT_ROUTE_URL environment variable contains the URL of the local web server.
+
+The maker bundle supports generating the following types of tests depending on how you want to test your application:
+    TestCase: Basic PHPUnit tests;
+    KernelTestCase: Basic tests that have access to Symfony services;
+    WebTestCase: To run browser-like scenarios, but that don't execute JavaScript code;
+    ApiTestCase: To run API-oriented scenarios;
+    PantherTestCase: To run e2e scenarios, using a real-browser or HTTP client and a real web server.
