@@ -154,3 +154,10 @@ inspaect failed message => symfony console messenger:failed:show
 retry => symfony console messenger:failed:retry
 
 get log workers in the cloud => symfony cloud:logs --worker=messages all
+
+
+Making Decisions with a Workflow 
+
+install => symfony composer req workflow
+
+diagram png worflow with dot => symfony console workflow:dump comment | dot -Tpng -o workflow.png
