@@ -108,6 +108,7 @@ run test => symfony php bin/phpunit
 $client = static::createClient() => the $client variable simulates a browser
 
 for env test => symfony console doctrine:database:create --env=test
+                symfony console doctrine:migrations:migrate
                 symfony console doctrine:migrations:migrate -n --env=test
 
 Fixture => symfony composer req orm-fixtures --dev
@@ -131,3 +132,25 @@ The maker bundle supports generating the following types of tests depending on h
     WebTestCase: To run browser-like scenarios, but that don't execute JavaScript code;
     ApiTestCase: To run API-oriented scenarios;
     PantherTestCase: To run e2e scenarios, using a real-browser or HTTP client and a real web server.
+
+From a PHPUnit test, you can get any service from the container via self::getContainer()->get(); it also gives access to non-public services.
+
+Understanding Messenger for asynchronous
+
+installation => symfony composer req doctrine-messenger
+
+When some logic should be executed asynchronously, send a message to a messenger bus. The bus stores the message in a queue and returns immediately
+to let the flow of operations resume as fast as possible.
+A cousumer runs continuously in the background to read new messages on the queu and execute the associated logic. The consumer can run on the same server 
+as the web application or on a separate one.
+
+consummer command => symfony console messenger:consume async -vv
+running bacground => symfony run -d --watch=config,src,templates,vendor/composer/installed.json symfony console messenger:consume async -vv
+
+list bacground workers => symfony server:status
+stop workers => kill PID
+
+inspaect failed message => symfony console messenger:failed:show
+retry => symfony console messenger:failed:retry
+
+get log workers in the cloud => symfony cloud:logs --worker=messages all
