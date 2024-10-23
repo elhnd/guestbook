@@ -161,3 +161,20 @@ Making Decisions with a Workflow
 install => symfony composer req workflow
 
 diagram png worflow with dot => symfony console workflow:dump comment | dot -Tpng -o workflow.png
+
+Sendineg Email
+
+To send an email, you can choose between several Email class abstractions; from Message, the lowest level, to NotificationEmail, the highest one.
+You will probably use the Email class the most, but NotificationEmail is the perfect choice for internal emails.
+
+Inky for templating mail => instead of HTML to design emails. It helps create responsive emails that are compatible with all popular email clients.
+    installation => symfony composer req "twig/cssinliner-extra:^3" "twig/inky-extra:^3"
+In emails, generate URLs with url() instead of path() as you need absolute ones (with scheme and host).
+
+Mail catcher => Instead of using a "real" SMTP server or a third-party provider to send emails, let's use a mail catcher. 
+A mail catcher provides an SMTP server that does not deliver the emails, but makes them available through a Web interface instead.
+open mail catcher => symfony open:local:webmail
+
+To be on the safe side, emails are only sent on the master branch by default. Enable SMTP explicitly on non-master branches if you know what you are doing:
+    symfony cloud:env:info enable_smtp on
+
