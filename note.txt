@@ -178,3 +178,11 @@ open mail catcher => symfony open:local:webmail
 To be on the safe side, emails are only sent on the master branch by default. Enable SMTP explicitly on non-master branches if you know what you are doing:
     symfony cloud:env:info enable_smtp on
 
+
+Caching
+
+The setSharedMaxAge() method configures the cache expiration for reverse proxies. Use setMaxAge() to control the browser cache.
+Time is expressed in seconds (1 hour = 60 minutes = 3600 seconds).
+
+When you want to cache a fragment of a page, move it outside of the current HTTP request by creating a sub-request.
+ESI is a perfect match for this use case. An ESI is a way to embed the result of an HTTP request into another.
