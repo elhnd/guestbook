@@ -186,3 +186,16 @@ Time is expressed in seconds (1 hour = 60 minutes = 3600 seconds).
 
 When you want to cache a fragment of a page, move it outside of the current HTTP request by creating a sub-request.
 ESI is a perfect match for this use case. An ESI is a way to embed the result of an HTTP request into another.
+
+For purging some cache by uri => curl -s -I -X PURGE -u admin:admin `symfony var:export SYMFONY_PROJECT_DEFAULT_ROUTE_URL`admin/http-cache/
+                                 curl -s -I -X PURGE -u admin:admin `symfony var:export SYMFONY_PROJECT_DEFAULT_ROUTE_URL`admin/http-cache/conference_header
+
+The symfony var:export SYMFONY_PROJECT_DEFAULT_ROUTE_URL sub-command returns the current URL of the local web server.
+
+command creation => symfony console make:command app:step:info
+
+ESI support on Varnish should be enabled explicitly for each request. 
+To make it universal, Symfony uses the standard Surrogate-Capability and Surrogate-Control headers to negotiate ESI support:
+
+Purge some url in prod => curl -X PURGE -H 'x-purge-token: PURGE_NOW' `symfony cloud:env:url --pipe --primary`
+                          curl -X PURGE -H 'x-purge-token: PURGE_NOW' `symfony cloud:env:url --pipe --primary`conference_header
