@@ -26,7 +26,7 @@ class CommentMessageHandler
         private MailerInterface $mailer,
         #[Autowire('%admin_email%')] private string $adminEmail,
         private ImageOptimizer $imageOptimizer,
-        #[Autowire('%/photo_dir%')] private string $photoDir,
+        #[Autowire('%photo_dir%')] private string $photoDir,
         private ?LoggerInterface $logger = null,
     ) {
     }

@@ -33,7 +33,7 @@ class AdminController extends AbstractController
         if ($commentStateMachine->can($comment, 'publish')) {
             $transition = $accepted ? 'publish' : 'reject';
         } elseif ($commentStateMachine->can($comment, 'publish_ham')) {
-            $transition = $accepted ? 'publish' : 'reject_ham';
+            $transition = $accepted ? 'publish_ham' : 'reject_ham';
         } else {
             return new Response('Comment already reviewed or not in the right state.');
         }
