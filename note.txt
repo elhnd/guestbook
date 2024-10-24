@@ -220,3 +220,8 @@ Dowloading archive bootstrap :
 
 compile encore dev => symfony run npm run dev
 watch              => symfony run -d npm run watch
+
+
+Resizing Images
+
+Optimize image with Imagine => symfony composer req "imagine/imagine:^1.2"
